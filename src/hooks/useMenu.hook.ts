@@ -34,7 +34,7 @@ export function MenuButton(): JSX.Element {
             {
                 className: "select-none text-center dark:text-neutral-950 text-slate-100 font-bold transition-all duration-75 ease-in"
             },
-            open ? "close menu" : "open menu"
+            open ? "close" : "open"
         )
     )
 }
@@ -57,19 +57,19 @@ export function Menu(): JSX.Element {
         },
         createElement("ul",
             {
-                className: "xs:flex-col md:flex space-y-3 md:space-y-0 items-center justify-center w-full h-full overflow-clip"
+                className: "xs:flex-col md:flex space-y-3 md:space-y-0 items-center justify-center w-full h-full overflow-clip rounded-xl" 
             },
             routesArray.map((el, i) =>
                 createElement("li",
                     {
                         key: i,
                         onClick: handleOpen,
-                        className: `select-none dark:text-neutral-950 text-slate-100 font-bold transition-all duration-75 ease-in cursor-pointer group ${hoverColors[i]} h-min md:h-full w-full md:w-1/5 flex items-center justify-center relative`
+                        className: `select-none dark:text-neutral-950 text-slate-100 font-bold transition-all duration-75 ease-in cursor-pointer group ${hoverColors[i]} h-min md:h-full w-full md:w-1/5 flex items-center justify-center relative overflow-clip`
                     },
                     
                         createElement("span",
                         {key:i+2,
-                            className:"whitespace-nowrap py-1 text-3xl md:text-4xl text-start xl:text-center uppercase md:transform md:-rotate-90 h-fit group-hover:text-slate-100"
+                            className:"whitespace-nowrap py-1 text-3xl md:text-4xl text-start xl:text-center uppercase md:transform md:-rotate-90 h-fit group-hover:text-slate-100 "
                         },
                         RoutesLabel[el.routeName as NavbarRoutes]
                     ),
