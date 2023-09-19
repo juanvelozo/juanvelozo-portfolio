@@ -1,7 +1,14 @@
+import Container from "@/components/common/ui/Container";
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <span>Juan velozo</span>
-    </main>
+    <Container>
+      <span style={{fontSize: 100}}>Texto</span>
+      <span style={{fontSize: 100}}>Texto</span>
+      <span style={{fontSize: 100}}>Texto</span>
+      <span style={{fontSize: 100}}>Texto</span>
+      <span style={{fontSize: 100}}>Texto</span>
+      <span style={{fontSize: 100}}>Texto</span>
+    </Container>
   )
 }

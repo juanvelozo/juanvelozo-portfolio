@@ -1,7 +1,9 @@
-export default function PageDetails():JSX.Element{
+import Container from "@/components/common/ui/Container";
+
+export default function ProjectDetailsPage():JSX.Element{
     return (
-        <div>
+        <Container>
             Project
-        </div>
+        </Container>
     )
 }

@@ -1,8 +1,9 @@
-import { Menu, MenuButton } from '@/hooks/useMenu.hook'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import MenuContextProvider from '@/context/MenuContext'
+import MenuBar from '@/components/common/ui/menuBar/MenuBar'
+import ThemeContextProvider from '@/context/ThemeContext'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,11 +19,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+
       <MenuContextProvider>
-        <body className={`${inter.className} bg-stone-100 dark:bg-neutral-950 text-neutral-950 dark:text-slate-100 relative overflow-clip`}>
-          {children}
-          <MenuButton />
-          <Menu />
+        <body className={`${inter.className} bg-stone-100 dark:bg-neutral-950 text-neutral-950 dark:text-slate-100 relative`}>
+          <ThemeContextProvider>
+            {children}
+            <MenuBar />
+          </ThemeContextProvider>
         </body>
       </MenuContextProvider>
     </html>
