@@ -53,23 +53,23 @@ export function Menu(): JSX.Element {
     // render
     return createElement("div",
         {
-            className: `absolute ${open ? "translate-y-10 md:translate-y-0" : "translate-y-96"} transition-transform w-full bottom-0 h-[30vh] bg-neutral-950 dark:bg-stone-100 rounded-xl`,
+            className: `absolute ${open ? "translate-y-0" : "translate-y-96"} transition-transform w-full bottom-0 h-[40hv] md:h-[30vh] bg-red-400 bg-neutral-950 dark:bg-stone-100 rounded-t-xl `,
         },
         createElement("ul",
             {
-                className: "xs:flex-col md:flex space-y-3 md:space-y-0 items-center justify-center w-full h-full overflow-clip rounded-xl" 
+                className: "flex flex-col md:flex-row space-y-1 md:space-y-0 items-center justify-center w-full h-full overflow-clip rounded-t-xl" 
             },
             routesArray.map((el, i) =>
                 createElement("li",
                     {
                         key: i,
                         onClick: handleOpen,
-                        className: `select-none dark:text-neutral-950 text-slate-100 font-bold transition-all duration-75 ease-in cursor-pointer group ${hoverColors[i]} h-min md:h-full w-full md:w-1/5 flex items-center justify-center relative overflow-clip`
+                        className: `select-none dark:text-neutral-950 text-slate-100 font-bold transition-all duration-75 ease-in cursor-pointer group ${hoverColors[i]} h-min md:h-full w-full md:w-1/5 flex items-center justify-start relative overflow-clip`
                     },
                     
                         createElement("span",
                         {key:i+2,
-                            className:"whitespace-nowrap py-1 text-3xl md:text-4xl text-start xl:text-center uppercase md:transform md:-rotate-90 h-fit group-hover:text-slate-100 "
+                            className:"whitespace-nowrap p-2 text-3xl md:text-4xl text-start xl:text-center uppercase md:transform md:-rotate-90 h-fit group-hover:text-slate-100 "
                         },
                         RoutesLabel[el.routeName as NavbarRoutes]
                     ),

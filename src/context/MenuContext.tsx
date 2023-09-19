@@ -5,7 +5,7 @@ export const MenuContext = createContext<MenuContextType | null>(null)
 
 export default function MenuContextProvider({ children }: { children: ReactNode }): JSX.Element {
     // states
-    const [open, setOpen] = useState<boolean>(false)
+    const [open, setOpen] = useState<boolean>(true)
 
     // hooks
     const { Provider } = MenuContext
