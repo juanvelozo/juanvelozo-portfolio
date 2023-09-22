@@ -9,6 +9,15 @@ export default function Home() {
       <span style={{fontSize: 100}}>Texto</span>
       <span style={{fontSize: 100}}>Texto</span>
       <span style={{fontSize: 100}}>Texto</span>
+      <span style={{fontSize: 100}}>Texto</span>
+      <span style={{fontSize: 100}}>Texto</span>
+      <span style={{fontSize: 100}}>Texto</span>
+      <span style={{fontSize: 100}}>Texto</span>
+      <span style={{fontSize: 100}}>Texto</span>
+      <span style={{fontSize: 100}}>Texto</span>
+      <span style={{fontSize: 100}}>Texto</span>
+      <span style={{fontSize: 100}}>Texto</span>
+      <span style={{fontSize: 100}}>Texto</span>
     </Container>
   )
 }

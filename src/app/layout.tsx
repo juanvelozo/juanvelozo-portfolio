@@ -19,9 +19,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-
       <MenuContextProvider>
-        <body className={`${inter.className} bg-stone-100 dark:bg-neutral-950 text-neutral-950 dark:text-slate-100 relative`}>
+        <body className={`${inter.className} bg-stone-100 dark:bg-neutral-950 text-neutral-950 dark:text-slate-100 transition-colors duration-500 relative no-scrollbar`}>
           <ThemeContextProvider>
             {children}
             <MenuBar />

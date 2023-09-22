@@ -1,7 +1,9 @@
 "use client"
 
 import { ThemeContext, ThemeContextType, ThemeEnums } from "@/context/ThemeContext"
-import { useContext, createElement } from "react"
+import { useContext, createElement, ReactNode } from "react"
+import { LampIcon } from "../../public/assets/svg/theme/Lamp"
+import { LampOffIcon } from "../../public/assets/svg/theme/LampOff"
 
  /**
  * @description this is a hook help us to access to the value of the theme and the Dispatch method
@@ -33,9 +35,18 @@ export default function ThemeSwitcher(): JSX.Element {
         },
         createElement("span",
             {
-                className: "select-none text-center dark:text-neutral-950 text-slate-100 font-bold transition-all duration-75 ease-in"
+                className: "select-none text-center dark:text-neutral-950 text-slate-100 font-bold transition-colors delay-150 ease-in"
             },
-            theme
+            ThemeIcon[theme]
         )
     )
+}
+
+type ThemeIconType ={
+    [icon in ThemeEnums]:ReactNode
+}
+
+const ThemeIcon:ThemeIconType ={
+[ThemeEnums.DARK_THEME]: LampIcon(),
+[ThemeEnums.LIGHT_THEME]:LampOffIcon()
 }
