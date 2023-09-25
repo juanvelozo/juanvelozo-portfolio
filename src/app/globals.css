@@ -2,8 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "satoshi-regular";
+  src: url('../../public/fonts/Satoshi-Regular.otf');
+}
+@font-face {
+  font-family: "satoshi-medium";
+  src: url('../../public/fonts/Satoshi-Medium.otf');
+}
+@font-face {
+  font-family: "satoshi-light";
+  src: url('../../public/fonts/Satoshi-Light.otf');
+}
+@font-face {
+  font-family: "satoshi-italic";
+  src: url('../../public/fonts/Satoshi-Italic.otf');
+}
+@font-face {
+  font-family: "satoshi-bold";
+  src: url('../../public/fonts/Satoshi-Bold.otf');
+}
+@font-face {
+  font-family: "satoshi-black";
+  src: url('../../public/fonts/Satoshi-Black.otf');
+}
+
+h1{
+  @apply font-SatoshiBlack tracking-tighter text-6xl
+}
+
 @layer utilities {
-    @variants responsive {
+   
       /* Hide scrollbar for Chrome, Safari and Opera */
       .no-scrollbar::-webkit-scrollbar {
           display: none;
@@ -14,5 +43,5 @@
           -ms-overflow-style: none;  /* IE and Edge */
           scrollbar-width: none;  /* Firefox */
       }
-    }
+    
   }

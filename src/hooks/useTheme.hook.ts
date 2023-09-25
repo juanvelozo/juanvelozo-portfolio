@@ -30,12 +30,12 @@ export default function ThemeSwitcher(): JSX.Element {
 
     return createElement("div",
         {
-            className: "absolute bg-neutral-950 z-10 dark:bg-white w-16 h-16 rounded-full top-16 right-2 md:top-24 md:right-5 flex items-center justify-center cursor-pointer",
+            className: "w-16 h-16 rounded-full top-16 right-2 md:top-24 md:right-5 flex items-center justify-center cursor-pointer",
             onClick: SwitchTheme
         },
         createElement("span",
             {
-                className: "select-none text-center dark:text-neutral-950 text-slate-100 font-bold transition-colors delay-150 ease-in"
+                className: "select-none text-center text-neutral-950 dark:text-slate-100 font-bold transition-colors delay-150 ease-in"
             },
             ThemeIcon[theme]
         )

@@ -1,9 +1,9 @@
 import { ISpinnerProps } from "./Spinner.types";
 
-export default function Spinner({ color, size = "md" }: ISpinnerProps): JSX.Element {
+export default function Spinner({ color, size = "md",className }: ISpinnerProps): JSX.Element {
 
   return (
-    <div role="status">
+    <div role="status" className={className}>
       <svg
         aria-hidden="true"
         role="status"

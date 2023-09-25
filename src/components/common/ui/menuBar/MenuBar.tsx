@@ -1,12 +1,17 @@
-import { Menu, MenuButton } from "@/hooks/useMenu.hook";
+import { MenuButton } from "@/hooks/useMenu.hook";
 import ThemeSwitcher from "@/hooks/useTheme.hook";
+import RouteLabel from "./RouteLabel";
+import NavBar from "../navBar/NavBar";
 
-export default function MenuBar():JSX.Element{
-    return (
-         <div className='fixed top-0 min-h-screen w-full overflow-clip'>
-            <MenuButton />
-            <ThemeSwitcher/>
-            <Menu />
-          </div>
-    )
+export default function MenuBar(): JSX.Element {
+  return (
+      <NavBar>
+        <div className="flex items-center">
+          <MenuButton />
+          <RouteLabel/>
+        </div>
+        <ThemeSwitcher/>
+    </NavBar>
+      
+  )
 }

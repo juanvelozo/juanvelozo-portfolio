@@ -6,6 +6,7 @@ const config: Config = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
     './src/hooks/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/features/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   darkMode:'class',
   theme: {
@@ -15,6 +16,14 @@ const config: Config = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      fontFamily:{
+        SatoshiRegular :"satoshi-regular",
+        SatoshiMedium:"satoshi-medium",
+        SatoshiLight:"satoshi-light",
+SatoshiItalic:"satoshi-italic",
+SatoshiBold:"satoshi-bold",
+SatoshiBlack:"satoshi-black",
+      }
     },
   },
   plugins: [],

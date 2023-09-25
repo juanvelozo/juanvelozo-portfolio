@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google'
 import MenuContextProvider from '@/context/MenuContext'
 import MenuBar from '@/components/common/ui/menuBar/MenuBar'
 import ThemeContextProvider from '@/context/ThemeContext'
+import { Menu } from '@/hooks/useMenu.hook'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,10 +21,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <MenuContextProvider>
-        <body className={`${inter.className} bg-stone-100 dark:bg-neutral-950 text-neutral-950 dark:text-slate-100 transition-colors duration-500 relative no-scrollbar`}>
+        <body className={`${inter.className} bg-stone-100 dark:bg-neutral-950 text-neutral-950 dark:text-slate-100 transition-colors duration-500 relative no-scrollbar min-h-screen overflow-auto`}>
           <ThemeContextProvider>
-            {children}
             <MenuBar />
+         
+            {children}
+               <Menu />
           </ThemeContextProvider>
         </body>
       </MenuContextProvider>

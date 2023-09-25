@@ -14,7 +14,7 @@ export default function Button({
     loading,
     fullWidth,
     className,
-    type="button",
+    type = "button",
 }: IButtonProps): JSX.Element {
 
     const ButtonVariant: BtnVariant = {
@@ -25,19 +25,21 @@ export default function Button({
 
     return (
         <button
-            className={`${className} py-2 ${fullWidth ? "w-full" : "w-max"} ${ButtonPill[rounded]} disabled:text-opacity-70 disabled:cursor-not-allowed ${ButtonVariant[variant]} ${ButtonSize[size]} flex items-center justify-center gap-2 transition-all duration-150 ease-in-out`}
+            className={`${className} py-2 ${fullWidth ? "w-full" : "w-max !min-w-[10rem]"} ${ButtonPill[rounded]} disabled:text-opacity-70 disabled:cursor-not-allowed ${ButtonVariant[variant]} ${ButtonSize[size]} flex flex-col items-center  justify-center transition-all ease-in-out max-h-10 overflow-clip`}
             onClick={onClick}
             disabled={disabled}
             type={type}
             aria-label={title}
             {...buttonProps}
         >
-            {title}
+            <span className={`${loading ? "-translate-y-5" : "translate-y-0"} transition-transform`}>{title}</span>
             {loading ? (
-                <Spinner
-                    color={ButtonTextColor[color]}
-                    size={SpinnerSizeConfig[size] as SpinnerSizeType}
-                />
+                <div className={`${loading ? "-translate-y-3 delay-500" : "translate-y-10 opacity-0"} transition-transform`}>
+                    <Spinner
+                        color={ButtonTextColor[color]}
+                        size={SpinnerSizeConfig[size] as SpinnerSizeType}
+                    />
+                </div>
             ) : null}
         </button>
     );

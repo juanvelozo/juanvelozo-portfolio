@@ -3,7 +3,7 @@
 import { NavbarRoutes, RoutesLabel, routesArray } from "@/constants/routes"
 import { MenuContext, MenuContextType } from "@/context/MenuContext"
 import { usePathname, useRouter } from "next/navigation"
-import { useContext, createElement } from "react"
+import { useContext, createElement, useState } from "react"
 import { ArrowUpRightIcon } from "../../public/assets/svg/menu/ArrowUpRight"
 import { MenuIcon } from "../../public/assets/svg/menu/MenuIcon"
 import { CloseMenuIcon } from "../../public/assets/svg/menu/CloseMenu"
@@ -23,20 +23,21 @@ export function useMenu(): MenuContextType {
 export function MenuButton(): JSX.Element {
     // hooks
     const { open, setOpen } = useMenu()
-    const pathname = usePathname()
+
     // function
     function handleOpen(): void {
         setOpen(prev => !prev)
     }
+
     // render
     return createElement("div",
         {
             onClick: handleOpen,
-            className: "absolute bg-neutral-950 z-50 dark:bg-white w-16 h-16 rounded-full top-2 right-2 md:top-5 md:right-5 flex items-center justify-center cursor-pointer"
+            className: "w-16 h-16 rounded-full top-2 right-2 md:top-5 md:right-5 flex items-center justify-center cursor-pointer "
         },
         createElement("span",
             {
-                className: "select-none text-center dark:text-neutral-950 text-slate-100 font-bold transition-all duration-75 ease-in"
+                className: "select-none text-center text-neutral-950 dark:text-slate-100 font-bold transition-all duration-75 ease-in"
             },
             open ? CloseMenuIcon() : MenuIcon()
         )
@@ -44,6 +45,9 @@ export function MenuButton(): JSX.Element {
 }
 
 export function Menu(): JSX.Element {
+    // state
+    const[ clicked, setClicked] = useState<number|undefined>()
+
     // hooks
     const { open, setOpen } = useMenu()
     const pathname = usePathname()
@@ -51,9 +55,10 @@ export function Menu(): JSX.Element {
 
 
     // function
-    function handleOpen(url: string): void {
-        push(url)
+    function handleOpen(url: string, index:number): void {
+        setClicked(index)
         setOpen(prev => !prev)
+        push(url)
     }
 
     function CheckIsActive(index: number) {
@@ -61,11 +66,10 @@ export function Menu(): JSX.Element {
         return pathname.includes(routesArray[index].routePath)
     }
 
-const className="pointer-events-none"
     // render
     return createElement("div",
         {
-            className: `absolute ${open ? "translate-y-0" : "translate-y-96"} transition-transform w-full bottom-0 h-[40hv] md:h-[30vh] bg-stone-200 dark:bg-stone-100 rounded-t-xl z-50`,
+            className: `fixed ${open ? "translate-y-0" : "translate-y-96"} transition-transform delay-500 w-full bottom-0 h-[40hv] md:h-[30vh] bg-stone-200 dark:bg-stone-100 rounded-t-xl z-50`,
         },
         createElement("ul",
             {
@@ -77,20 +81,20 @@ const className="pointer-events-none"
                         key: i,
                         onClick: () => {
                             CheckIsActive(i) ? null:
-                            handleOpen(el.routePath)
+                            handleOpen(el.routePath,i)
                         },
-                        className: `select-none  font-bold transition-all duration-75 ease-in cursor-pointer group ${hoverColors[i]} ${CheckIsActive(i) ? `${bgColors[i]} pointer-events-none` + " [&>span]:underline [&>span]:text-slate-200 hover:opacity-80" : "[&>span]:hover:underline [&>span]:hover:underline-offset-8 [&>span]:hover:text-slate-100"} h-min md:h-full w-full md:w-1/5 flex items-center justify-start relative overflow-clip`
+                        className: `select-none  font-bold transition-all duration-75 ease-in cursor-pointer group ${hoverColors[i]} ${CheckIsActive(i) ? `${bgColors[i]} pointer-events-none` + " md:[&>span]:underline [&>span]:text-slate-200 hover:opacity-80" : "md:[&>span]:hover:underline [&>span]:hover:underline-offset-8 [&>span]:hover:text-slate-100"} h-min md:h-full w-full md:w-1/5 flex items-center justify-start relative overflow-clip`
                     },
 
                     createElement("span",
                         {
                             key: i + 2,
-                            className: "whitespace-nowrap p-2 text-3xl md:text-4xl text-start xl:text-center uppercase md:transform md:-rotate-90 h-fit transition duration-300 text-neutral-950 group-hover:scale-110"
+                            className: "whitespace-nowrap p-4 lg:p-2 text-3xl md:text-4xl text-start xl:text-center uppercase md:transform md:-rotate-90 h-fit transition duration-300 text-neutral-950 group-hover:scale-110 font-SatoshiMedium z-10"
                         },
                         RoutesLabel[el.routeName as NavbarRoutes]
                     ), createElement("div", { 
-                        className: `absolute top-4 right-4 ${CheckIsActive(i) ?"[&>svg]:stroke-white rotate-180": iconColors[i]} group-hover:[&>svg]:stroke-white group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform delay-150 hidden md:block` }, 
-                        ArrowUpRightIcon()
+                        className: `absolute !hidden lg:!flex top-4 right-4 ${CheckIsActive(i) ?"[&>svg]:stroke-white rotate-180": iconColors[i]} ${clicked === i ?"rotate-180":"rotate-0"} group-hover:[&>svg]:stroke-white group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform delay-150 hidden md:block` }, 
+                        ArrowUpRightIcon(),clicked === i
                     )
 
                 )
