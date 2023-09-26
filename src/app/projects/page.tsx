@@ -1,8 +1,9 @@
 import Container from "@/components/common/ui/Container";
 import { contentfulClient } from "@/lib/contentful/client";
-import { GetStaticProps } from "next";
 
-function ProjectsPage({ posts }: { posts: any }): JSX.Element {
+async function ProjectsPage() {
+const posts = await fetchPosts()
+
     return (
         <Container>
             <h1>Projects</h1>
@@ -13,7 +14,7 @@ function ProjectsPage({ posts }: { posts: any }): JSX.Element {
     )
 }
 
-export const getStaticProps = async () => {
+export async function fetchPosts ()  {
     const response = await contentfulClient.getEntries({ content_type: 'portfolioPost' }
     )
 
