@@ -22,7 +22,7 @@ export default async function ProjectsPage() {
         <Container>
             <h1>Projects</h1>
             <Suspense fallback={<Spinner/>}>
-            {JSON.stringify(posts)}
+            {JSON.stringify(posts.posts[0].fields)}
             </Suspense>
         </Container>
     )
