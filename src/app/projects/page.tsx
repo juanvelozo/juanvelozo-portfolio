@@ -1,20 +1,9 @@
 import Container from "@/components/common/ui/Container";
+import Spinner from "@/components/common/ui/spinner/Spinner";
 import { contentfulClient } from "@/lib/contentful/client";
+import { Suspense } from "react";
 
-async function ProjectsPage() {
-const posts = await fetchPosts()
-
-    return (
-        <Container>
-            <h1>Projects</h1>
-            <div>
-            {JSON.stringify(posts)}
-            </div>
-        </Container>
-    )
-}
-
-export async function fetchPosts ()  {
+async function fetchPosts ()  {
     const response = await contentfulClient.getEntries({ content_type: 'portfolioPost' }
     )
 
@@ -25,4 +14,17 @@ export async function fetchPosts ()  {
         
     }
 }
-export default ProjectsPage
+
+export default async function ProjectsPage() {
+    const posts = await fetchPosts()
+
+    return (
+        <Container>
+            <h1>Projects</h1>
+            <Suspense fallback={<Spinner/>}>
+            {JSON.stringify(posts)}
+            </Suspense>
+        </Container>
+    )
+}
+
