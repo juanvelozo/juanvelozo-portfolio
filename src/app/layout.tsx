@@ -5,6 +5,7 @@ import MenuContextProvider from '@/context/MenuContext'
 import MenuBar from '@/components/common/ui/menuBar/MenuBar'
 import ThemeContextProvider from '@/context/ThemeContext'
 import { Menu } from '@/hooks/useMenu.hook'
+import Footer from '@/features/ui/footer/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -24,9 +25,9 @@ export default function RootLayout({
         <body className={`${inter.className} bg-stone-100 dark:bg-neutral-950 text-neutral-950 dark:text-slate-100 transition-colors duration-500 relative no-scrollbar min-h-screen overflow-auto`}>
           <ThemeContextProvider>
             <MenuBar />
-         
             {children}
-               <Menu />
+            <Menu />
+            <Footer/>
           </ThemeContextProvider>
         </body>
       </MenuContextProvider>
